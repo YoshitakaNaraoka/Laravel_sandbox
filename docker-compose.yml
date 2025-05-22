@@ -1,8 +1,7 @@
-version: "3.9"
-
-volumes: 
+volumes:
   mysql-store:
-  
+  mysql-volume:
+
 services:
   app:
     build:
@@ -10,7 +9,7 @@ services:
       dockerfile: ./docker/app/Dockerfile
     volumes:
       - ./src/:/app
-  
+
   web:
     build:
       context: .
@@ -21,7 +20,7 @@ services:
       - ./src/:/app
     depends_on:
       - app
-  
+
   db:
     build:
       context: .
@@ -36,6 +35,3 @@ services:
       TZ: 'Asia/Tokyo'
     volumes:
       - mysql-volume:/var/lib/mysql
-      
-volumes:
-  mysql-volume:
