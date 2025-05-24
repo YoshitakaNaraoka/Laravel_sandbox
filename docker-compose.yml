@@ -9,6 +9,8 @@ services:
       dockerfile: ./docker/app/Dockerfile
     volumes:
       - ./src/:/app
+    ports:
+    - "8081:8080"
 
   web:
     build:
