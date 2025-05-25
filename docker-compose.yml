@@ -29,6 +29,8 @@ services:
       dockerfile: ./docker/db/Dockerfile
     ports:
       - 3306:3306
+    restart: always
+    user: 1000:1000
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
