@@ -9,6 +9,7 @@ services:
       dockerfile: ./docker/app/Dockerfile
     volumes:
       - ./src/:/app
+      - .env:/app/.env
     ports:
     - "8081:8080"
 
@@ -29,12 +30,11 @@ services:
       dockerfile: ./docker/db/Dockerfile
     ports:
       - 3306:3306
-    restart: always
     user: 1000:1000
     environment:
-      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_USER: ${DB_USER}
+      MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       TZ: 'Asia/Tokyo'
       MYSQL_DISABLE_UPGRADE_BACKUP: "1"
