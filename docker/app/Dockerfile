@@ -11,11 +11,14 @@ RUN apt-get update && \
         libzip-dev \
         libicu-dev \
         libonig-dev \
+        # ↓↓↓ ここに以下の行を追加 ↓↓↓
+        libxml2-dev \          # DOM 拡張機能の依存
+        libcurl4-openssl-dev \ # cURL 拡張機能の依存
+        # ↑↑↑ ここまで追加 ↑↑↑
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
 # Install PHP Extensions using docker-php-ext-install
-# dom と curl はここに追加
 RUN docker-php-ext-install intl pdo_mysql zip bcmath dom curl
 
 # config file COPY
