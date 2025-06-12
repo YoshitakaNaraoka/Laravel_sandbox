@@ -11,10 +11,8 @@ RUN apt-get update && \
         libzip-dev \
         libicu-dev \
         libonig-dev \
-        # ↓↓↓ ここに以下の行を追加 ↓↓↓
-        libxml2-dev \          # DOM 拡張機能の依存
-        libcurl4-openssl-dev \ # cURL 拡張機能の依存
-        # ↑↑↑ ここまで追加 ↑↑↑
+        libxml2-dev \
+        libcurl4-openssl-dev \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
@@ -22,7 +20,7 @@ RUN apt-get update && \
 RUN docker-php-ext-install intl pdo_mysql zip bcmath dom curl
 
 # config file COPY
-COPY ./docker/app/php.ini /usr/local/etc/php/php.ini
+COPY docker/app/php.ini /usr/local/etc/php/php.ini
 
 # install Composer
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
