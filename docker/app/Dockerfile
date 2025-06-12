@@ -13,6 +13,7 @@ RUN apt-get update && \
         libonig-dev \
         libxml2-dev \
         libcurl4-openssl-dev \
+        default-mysql-client \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
